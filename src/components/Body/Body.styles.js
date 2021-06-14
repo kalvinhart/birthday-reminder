@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 const StyledBody = styled.div`
   width: 100%;
+  padding: 20px;
   height: calc(100% - var(--header-height));
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
   }
 
   &::-webkit-scrollbar-track {
@@ -19,7 +20,7 @@ const StyledBody = styled.div`
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: var(--clr-primary);
+    background: var(--clr-secondary);
   }
 `;
 

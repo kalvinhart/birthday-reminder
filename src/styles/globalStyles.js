@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
     :root {
         --clr-primary: #fd746c;
+        --clr-secondary: #ff8c86;
         --box-shadow: 0 0 4px 4px rgba(253, 116, 108, 0.2);
         --header-height: 50px;
     }
@@ -26,6 +27,12 @@ const GlobalStyle = createGlobalStyle`
         align-items: center;
         font-family: Open Sans, sans-serif;
         font-size: 16px;
+        color: var(--clr-primary);
+    }
+
+    input {
+        font: inherit;
+        color: inherit;
     }
  `;
 
