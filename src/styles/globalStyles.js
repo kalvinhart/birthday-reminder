@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
         --clr-primary: #fd746c;
         --clr-secondary: #ff8c86;
         --box-shadow: 0 0 4px 4px rgba(253, 116, 108, 0.2);
+        --box-shadow-bottom: 0 2px 4px 4px rgba(253, 116, 108, 0.2);
         --header-height: 50px;
     }
 
@@ -30,9 +31,14 @@ const GlobalStyle = createGlobalStyle`
         color: var(--clr-primary);
     }
 
-    input {
+    input,
+    input::-webkit-input-placeholder  {
         font: inherit;
         color: inherit;
+    }
+    
+    input::-webkit-input-placeholder {
+            font-size: 12px;
     }
  `;
 

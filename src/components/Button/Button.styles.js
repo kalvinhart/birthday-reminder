@@ -14,7 +14,9 @@ const StyledButton = styled.button`
   transition: box-shadow 0.2s ease;
 
   &:hover,
-  &:active {
+  &:active,
+  &:focus {
+    outline: none;
     box-shadow: var(--box-shadow);
   }
 

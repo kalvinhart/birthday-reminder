@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 import { StyledButton } from "./Button.styles";
 
-const Button = ({ text, onClick, icon }) => {
+const Button = ({ text, click, icon }) => {
   return (
-    <StyledButton onClick={onClick} alt={!!text ? text : ""} icon={icon}>
+    <StyledButton onClick={click} alt={!!text ? text : ""} icon={icon}>
       {!!text && text}
       {!!icon && icon}
     </StyledButton>

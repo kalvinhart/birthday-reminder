@@ -8,6 +8,7 @@ const StyledHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   border-bottom: 2px solid var(--clr-primary);
+  box-shadow: var(--box-shadow-bottom);
 `;
 
 export { StyledHeader };
