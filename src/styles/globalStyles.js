@@ -9,6 +9,12 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: inherit;
     }
 
+    :root {
+        --clr-primary: #fd746c;
+        --box-shadow: 0 0 4px 4px rgba(253, 116, 108, 0.2);
+        --header-height: 50px;
+    }
+
     html {
         box-sizing: border-box;
     }
@@ -20,9 +26,6 @@ const GlobalStyle = createGlobalStyle`
         align-items: center;
         font-family: Open Sans, sans-serif;
         font-size: 16px;
-        background: #fd746c;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #ff9068, #fd746c);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #ff9068, #fd746c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
  `;
 
