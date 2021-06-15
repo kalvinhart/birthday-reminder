@@ -2,29 +2,61 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { StyledItemWrapper, TextWrapper, ButtonWrapper } from "./BirthdayItem.styles";
 import { H2, SpanBirthday } from "../../styles/textStyles";
+import { StyledForm, StyledInput } from "../../styles/formStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrashAlt, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Button from "../Button/Button";
 
 const BirthdayItem = ({ id, name, birthday, deleteItem }) => {
   const [editing, setEditing] = useState(false);
+  const [formData, setFormData] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!formData) return;
+  };
+
+  const editClickHandler = () => {
+    setEditing(true);
+  };
+
+  const cancelEditing = () => {
+    setEditing(false);
+  };
 
   return (
     <StyledItemWrapper>
-      <TextWrapper>
-        <H2>{name}</H2>
-        <SpanBirthday>{birthday}</SpanBirthday>
-      </TextWrapper>
-      <ButtonWrapper>
-        <Button
-          icon={<FontAwesomeIcon icon={faEdit} />}
-          onClick={() => setEditing(!editing)}
-        />
-        <Button
-          icon={<FontAwesomeIcon icon={faTrashAlt} />}
-          onClick={() => deleteItem(id)}
-        />
-      </ButtonWrapper>
+      {editing ? (
+        <StyledForm onSubmit={handleSubmit}>
+          <StyledInput
+            type="text"
+            value={formData}
+            onChange={(e) => setFormData(e.target.value)}
+          />
+          <ButtonWrapper>
+            <Button type="submit" icon={<FontAwesomeIcon icon={faCheck} />} />
+            <Button
+              type="reset"
+              icon={<FontAwesomeIcon icon={faTimes} />}
+              click={cancelEditing}
+            />
+          </ButtonWrapper>
+        </StyledForm>
+      ) : (
+        <>
+          <TextWrapper>
+            <H2>{name}</H2>
+            <SpanBirthday>{birthday}</SpanBirthday>
+          </TextWrapper>
+          <ButtonWrapper>
+            <Button icon={<FontAwesomeIcon icon={faEdit} />} click={editClickHandler} />
+            <Button
+              icon={<FontAwesomeIcon icon={faTrashAlt} />}
+              click={() => deleteItem(id)}
+            />
+          </ButtonWrapper>
+        </>
+      )}
     </StyledItemWrapper>
   );
 };

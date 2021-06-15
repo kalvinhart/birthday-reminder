@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
+import { StyledAddNewWrapper, StyledAddNewContainer } from "./AddNew.styles";
 import {
-  StyledAddNewWrapper,
-  StyledAddNewContainer,
   StyledForm,
   StyledInputGroup,
   StyledLabel,
   StyledInput,
-} from "./AddNew.styles";
+} from "../../styles/formStyles.js";
 import { SpanError } from "../../styles/textStyles";
 import Button from "../Button/Button";
 
@@ -29,7 +28,7 @@ const AddNew = ({ showAdd, setShowAdd, data, setData, handleSubmit }) => {
   };
 
   return (
-    <StyledAddNewWrapper className={showAdd ? "show" : ""}>
+    <StyledAddNewWrapper className={showAdd ? "show" : "hide"}>
       <StyledAddNewContainer>
         <StyledForm onSubmit={(e) => validateForm(e)}>
           <StyledInputGroup>

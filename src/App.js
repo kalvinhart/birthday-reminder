@@ -28,6 +28,7 @@ function App() {
     if (!id) return;
     const newData = data.filter((item) => item.id !== id);
     setData(newData);
+    localStorage.setItem("birthdays", JSON.stringify(newData));
   };
 
   return (
