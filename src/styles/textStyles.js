@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const H1 = styled.h1`
   display: inline-block;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 300;
 `;
 

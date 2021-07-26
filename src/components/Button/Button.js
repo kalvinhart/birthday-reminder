@@ -3,10 +3,9 @@ import PropTypes from "prop-types";
 
 import { StyledButton } from "./Button.styles";
 
-const Button = ({ text, click, icon }) => {
-  console.log(click);
+const Button = ({ type, text, click, icon }) => {
   return (
-    <StyledButton onClick={click} icon={icon}>
+    <StyledButton type={type} onClick={click} icon={icon}>
       {!!text && text}
       {!!icon && icon}
     </StyledButton>
@@ -14,6 +13,7 @@ const Button = ({ text, click, icon }) => {
 };
 
 Button.propTypes = {
+  type: PropTypes.string.isRequired,
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   icon: PropTypes.element,
   onClick: PropTypes.func,

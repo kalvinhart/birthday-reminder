@@ -17,18 +17,28 @@ function App() {
     }
   }, []);
 
-  const handleSubmit = (newData) => {
-    const dataCopy = data;
-    dataCopy.push(newData);
-    setData(dataCopy);
-    localStorage.setItem("birthdays", JSON.stringify(dataCopy));
+  const saveData = (newData) => {
+    setData(newData);
+    localStorage.setItem("birthdays", JSON.stringify(newData));
+  };
+
+  const addData = (newData) => {
+    const dataCopy = [...data, newData];
+    saveData(dataCopy);
   };
 
   const deleteItem = (id) => {
     if (!id) return;
     const newData = data.filter((item) => item.id !== id);
-    setData(newData);
-    localStorage.setItem("birthdays", JSON.stringify(newData));
+    saveData(newData);
+  };
+
+  const updateData = (id, newData) => {
+    const dataCopy = data.map((item) => {
+      if (item.id !== id) return item;
+      return newData;
+    });
+    saveData(dataCopy);
   };
 
   return (
@@ -41,16 +51,18 @@ function App() {
           setShowAdd={setShowAdd}
           data={data}
           setData={setData}
-          handleSubmit={handleSubmit}
+          addData={addData}
         />
         <Body>
           {data.length > 0
             ? data.map((item) => {
                 return (
                   <BirthdayItem
+                    key={item.id}
                     id={item.id}
                     name={item.name}
                     birthday={item.date}
+                    updateItem={updateData}
                     deleteItem={deleteItem}
                   />
                 );

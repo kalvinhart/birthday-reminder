@@ -1,16 +1,21 @@
 import styled from "styled-components";
+import { StyledInput } from "../../styles/formStyles";
 
 const StyledItemWrapper = styled.div`
   width: 100%;
-  height: 50px;
-  padding: 10px 0;
+  height: ${(props) => (props.editing ? "150px" : "50px")};
+  padding: 15px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: height 0.2s ease;
 
   &:not(:last-child) {
-    margin-bottom: 10px;
     border-bottom: 2px dashed var(--clr-primary);
+  }
+
+  & ${StyledInput} {
+    margin-bottom: 10px;
   }
 `;
 

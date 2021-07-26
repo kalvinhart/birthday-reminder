@@ -6,14 +6,31 @@ import { StyledForm, StyledInput } from "../../styles/formStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Button from "../Button/Button";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { reverseDateString } from "../../helpers/dateHelper";
 
-const BirthdayItem = ({ id, name, birthday, deleteItem }) => {
+const BirthdayItem = ({ id, name, birthday, updateItem, deleteItem }) => {
   const [editing, setEditing] = useState(false);
-  const [formData, setFormData] = useState("");
+  const [editingName, setEditingName] = useState(name);
+  const [date, setDate] = useState(new Date(reverseDateString(birthday)));
 
-  const handleSubmit = (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
-    if (!formData) return;
+    if (!name || !date) return;
+    const [newNameElement, newDateElement] = e.target;
+    const newData = {
+      id: id,
+      name: newNameElement.value,
+      date: newDateElement.value,
+    };
+    updateItem(id, newData);
+    setEditing(false);
+  };
+
+  const handleDateChange = (date) => {
+    console.log(date);
+    setDate(date);
   };
 
   const editClickHandler = () => {
@@ -25,18 +42,26 @@ const BirthdayItem = ({ id, name, birthday, deleteItem }) => {
   };
 
   return (
-    <StyledItemWrapper>
+    <StyledItemWrapper editing={editing}>
       {editing ? (
-        <StyledForm onSubmit={handleSubmit}>
+        <StyledForm onSubmit={handleUpdate}>
           <StyledInput
             type="text"
-            value={formData}
-            onChange={(e) => setFormData(e.target.value)}
+            value={editingName}
+            onChange={(e) => setEditingName(e.target.value)}
+          />
+          <DatePicker
+            id="date"
+            dateFormat="dd/MM/yyyy"
+            selected={date}
+            onChange={handleDateChange}
+            showMonthDropdown
+            withPortal
           />
           <ButtonWrapper>
             <Button type="submit" icon={<FontAwesomeIcon icon={faCheck} />} />
             <Button
-              type="reset"
+              type="button"
               icon={<FontAwesomeIcon icon={faTimes} />}
               click={cancelEditing}
             />

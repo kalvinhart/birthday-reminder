@@ -40,6 +40,18 @@ const GlobalStyle = createGlobalStyle`
     input::-webkit-input-placeholder {
             font-size: 12px;
     }
+
+    input {
+        width: 200px;
+  padding: 5px 10px;
+  border: 1px solid var(--clr-primary);
+  border-radius: 10px;
+
+  &:focus {
+    outline: none;
+    box-shadow: var(--box-shadow);
+  }
+    }
  `;
 
 export default GlobalStyle;

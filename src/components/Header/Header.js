@@ -17,7 +17,8 @@ const Header = ({ showAdd, setShowAdd }) => {
 };
 
 Header.propTypes = {
-  addNew: PropTypes.func.isRequired,
+  showAdd: PropTypes.bool.isRequired,
+  setShowAdd: PropTypes.func.isRequired,
 };
 
 export default Header;
