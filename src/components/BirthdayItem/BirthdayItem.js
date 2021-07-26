@@ -74,8 +74,13 @@ const BirthdayItem = ({ id, name, birthday, updateItem, deleteItem }) => {
             <SpanBirthday>{birthday}</SpanBirthday>
           </TextWrapper>
           <ButtonWrapper>
-            <Button icon={<FontAwesomeIcon icon={faEdit} />} click={editClickHandler} />
             <Button
+              type="button"
+              icon={<FontAwesomeIcon icon={faEdit} />}
+              click={editClickHandler}
+            />
+            <Button
+              type="button"
               icon={<FontAwesomeIcon icon={faTrashAlt} />}
               click={() => deleteItem(id)}
             />

@@ -11,7 +11,7 @@ const Header = ({ showAdd, setShowAdd }) => {
   return (
     <StyledHeader>
       <H1>Birthday Reminders</H1>
-      <Button text={showAdd ? "Cancel" : "Add +"} click={handleClick} />
+      <Button type="button" text={showAdd ? "Cancel" : "Add +"} click={handleClick} />
     </StyledHeader>
   );
 };
