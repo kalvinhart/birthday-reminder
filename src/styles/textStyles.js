@@ -2,8 +2,13 @@ import styled from "styled-components";
 
 const H1 = styled.h1`
   display: inline-block;
-  font-size: 20px;
-  font-weight: 300;
+  font-size: 22px;
+  font-weight: 600;
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
 `;
 
 const H2 = styled.h2`

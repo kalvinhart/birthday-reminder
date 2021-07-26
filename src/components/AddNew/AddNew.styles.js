@@ -5,22 +5,14 @@ const StyledAddNewWrapper = styled.div`
   top: var(--header-height);
   left: 0;
   width: 100%;
-  height: 0;
+  height: ${(props) => (props.show ? "250px" : "0")};
   background-color: white;
-  opacity: 0;
+  opacity: ${(props) => (props.show ? "1" : "0")};
   overflow-y: hidden;
-  transition: height 0.3s ease-out;
-  border-bottom: 2px solid var(--clr-primary);
+  transition: height 0.3s ease-out, opacity 0.2s ease-out;
+  border-bottom: 2px solid grey;
 
-  &.show {
-    height: 250px;
-    opacity: 1;
-    box-shadow: var(--box-shadow-bottom);
-  }
-
-  &.hide {
-    display: none;
-  }
+  ${(props) => props.show && "box-shadow: var(--box-shadow-bottom)"};
 `;
 
 const StyledAddNewContainer = styled.div`

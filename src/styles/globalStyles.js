@@ -12,9 +12,10 @@ const GlobalStyle = createGlobalStyle`
     :root {
         --clr-primary: #fd746c;
         --clr-secondary: #ff8c86;
-        --box-shadow: 0 0 4px 4px rgba(253, 116, 108, 0.2);
-        --box-shadow-bottom: 0 2px 4px 4px rgba(253, 116, 108, 0.2);
+        --box-shadow: 2px 2px 6px 4px rgba(0, 0, 0, 0.1);
+        --box-shadow-bottom: 0 2px 6px 4px rgba(0, 0, 0, 0.1);
         --header-height: 50px;
+        --gradient: linear-gradient(to bottom, rgb(255, 140, 134), rgb(253, 116, 108));
     }
 
     html {
@@ -23,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         min-height: 100vh;
+        background-color: #fafafa;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -44,7 +46,7 @@ const GlobalStyle = createGlobalStyle`
     input {
         width: 200px;
   padding: 5px 10px;
-  border: 1px solid var(--clr-primary);
+  border: 1px solid grey;
   border-radius: 10px;
 
   &:focus {

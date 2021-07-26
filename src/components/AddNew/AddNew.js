@@ -42,7 +42,7 @@ const AddNew = ({ showAdd, setShowAdd, data, setData, addData }) => {
   };
 
   return (
-    <StyledAddNewWrapper className={showAdd ? "show" : ""}>
+    <StyledAddNewWrapper show={showAdd}>
       <StyledAddNewContainer>
         <StyledForm onSubmit={(e) => validateForm(e)}>
           <StyledInputGroup>
