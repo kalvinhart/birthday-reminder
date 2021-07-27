@@ -8,7 +8,7 @@ import { faEdit, faTrashAlt, faCheck, faTimes } from "@fortawesome/free-solid-sv
 import Button from "../Button/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { reverseDateString } from "../../helpers/dateHelper";
+import { reverseDateString, updateDateIfPast } from "../../helpers/dateHelper";
 
 const BirthdayItem = ({ id, name, birthday, updateItem, deleteItem }) => {
   const [editing, setEditing] = useState(false);
@@ -28,8 +28,12 @@ const BirthdayItem = ({ id, name, birthday, updateItem, deleteItem }) => {
   };
 
   const handleDateChange = (date) => {
-    console.log(date);
-    setDate(date);
+    const needNewDate = updateDateIfPast(date);
+    if (!needNewDate) {
+      setDate(date);
+      return;
+    }
+    setDate(needNewDate);
   };
 
   const editClickHandler = () => {
