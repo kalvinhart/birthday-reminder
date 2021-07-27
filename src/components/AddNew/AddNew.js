@@ -73,8 +73,6 @@ const AddNew = ({ showAdd, setShowAdd, addData }) => {
 AddNew.propTypes = {
   showAdd: PropTypes.bool.isRequired,
   setShowAdd: PropTypes.func.isRequired,
-  data: PropTypes.array.isRequired,
-  setData: PropTypes.func.isRequired,
   addData: PropTypes.func.isRequired,
 };
 
