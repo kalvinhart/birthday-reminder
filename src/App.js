@@ -22,8 +22,9 @@ function App() {
   }, []);
 
   const saveData = (newData) => {
-    setData(newData);
-    localStorage.setItem("birthdays", JSON.stringify(newData));
+    const orderedData = orderByDate(newData);
+    setData(orderedData);
+    localStorage.setItem("birthdays", JSON.stringify(orderedData));
   };
 
   const addData = (newData) => {
