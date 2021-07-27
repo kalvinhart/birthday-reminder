@@ -7,7 +7,7 @@ import Body from "./components/Body/Body";
 import AddNew from "./components/AddNew/AddNew";
 import BirthdayItem from "./components/BirthdayItem/BirthdayItem";
 
-import { createDateString } from "./helpers/dateHelper";
+import { createDateString, orderByDate } from "./helpers/dateHelper";
 
 function App() {
   const [data, setData] = useState([]);
@@ -15,7 +15,9 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem("birthdays")) {
-      setData(JSON.parse(localStorage.getItem("birthdays")));
+      const rawData = JSON.parse(localStorage.getItem("birthdays"));
+      const orderedData = orderByDate(rawData);
+      setData(orderedData);
     }
   }, []);
 

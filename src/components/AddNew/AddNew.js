@@ -11,8 +11,6 @@ import {
 import { SpanError } from "../../styles/textStyles";
 import Button from "../Button/Button";
 import DatePicker from "react-datepicker";
-import { createDateString } from "../../helpers/dateHelper";
-
 import "react-datepicker/dist/react-datepicker.css";
 
 const AddNew = ({ showAdd, setShowAdd, addData }) => {
