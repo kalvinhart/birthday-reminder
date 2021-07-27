@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { StyledItemWrapper, TextWrapper, ButtonWrapper } from "./BirthdayItem.styles";
 import { H2, SpanBirthday } from "../../styles/textStyles";
@@ -8,25 +8,12 @@ import { faEdit, faTrashAlt, faCheck, faTimes } from "@fortawesome/free-solid-sv
 import Button from "../Button/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { reverseDateString, updateDateIfPast } from "../../helpers/dateHelper";
+import { reverseDateString } from "../../helpers/dateHelper";
 
 const BirthdayItem = ({ id, name, birthday, updateItem, deleteItem }) => {
   const [editing, setEditing] = useState(false);
   const [editingName, setEditingName] = useState(name);
   const [date, setDate] = useState(new Date(reverseDateString(birthday)));
-
-  useEffect(() => {
-    if (!birthday) return;
-    const reversedDate = reverseDateString(birthday);
-    const needNewDate = updateDateIfPast(reversedDate);
-    if (!needNewDate) return;
-    const newData = {
-      id: id,
-      name: name,
-      date: needNewDate,
-    };
-    updateItem(id, newData);
-  }, [birthday, id, name, updateItem]);
 
   const handleUpdate = (e) => {
     e.preventDefault();
