@@ -7,6 +7,8 @@ import Body from "./components/Body/Body";
 import AddNew from "./components/AddNew/AddNew";
 import BirthdayItem from "./components/BirthdayItem/BirthdayItem";
 
+import { createDateString } from "./helpers/dateHelper";
+
 function App() {
   const [data, setData] = useState([]);
   const [showAdd, setShowAdd] = useState(false);
@@ -55,7 +57,7 @@ function App() {
                     key={item.id}
                     id={item.id}
                     name={item.name}
-                    birthday={item.date}
+                    birthday={createDateString(item.date)}
                     updateItem={updateData}
                     deleteItem={deleteItem}
                   />

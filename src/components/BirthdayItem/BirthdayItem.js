@@ -17,12 +17,11 @@ const BirthdayItem = ({ id, name, birthday, updateItem, deleteItem }) => {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    if (!name || !date) return;
-    const [newNameElement, newDateElement] = e.target;
+    if (!editingName || !date) return;
     const newData = {
       id: id,
-      name: newNameElement.value,
-      date: newDateElement.value,
+      name: editingName,
+      date: date,
     };
     updateItem(id, newData);
     setEditing(false);

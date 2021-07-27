@@ -18,22 +18,19 @@ import "react-datepicker/dist/react-datepicker.css";
 const AddNew = ({ showAdd, setShowAdd, addData }) => {
   const [name, setName] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [newDate, setNewDate] = useState(null);
   const [error, setError] = useState(false);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    const dateString = createDateString(date);
-    setNewDate(dateString);
   };
 
   const validateForm = (e) => {
     e.preventDefault();
-    if (!name || !newDate) {
+    if (!name || !selectedDate) {
       setError(true);
       return;
     }
-    let newData = { id: uuidv4(), name: name, date: newDate };
+    let newData = { id: uuidv4(), name: name, date: selectedDate };
     addData(newData);
     setName("");
     setSelectedDate(new Date());
