@@ -30,6 +30,8 @@ const updateDateIfPast = (date) => {
     date = new Date(date);
   }
   const now = new Date();
+  date.setHours(0, 0, 0, 0);
+  now.setHours(0, 0, 0, 0);
   if (date < now) {
     const newDateMs = date.setFullYear(date.getFullYear() + 1);
     const newDate = new Date(newDateMs);
