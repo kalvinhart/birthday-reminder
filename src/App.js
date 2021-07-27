@@ -7,7 +7,7 @@ import Body from "./components/Body/Body";
 import AddNew from "./components/AddNew/AddNew";
 import BirthdayItem from "./components/BirthdayItem/BirthdayItem";
 
-import { createDateString, orderByDate } from "./helpers/dateHelper";
+import { createDateString, orderByDate, updateDateIfPast } from "./helpers/dateHelper";
 
 function App() {
   const [data, setData] = useState([]);
@@ -16,10 +16,20 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem("birthdays")) {
       const rawData = JSON.parse(localStorage.getItem("birthdays"));
-      const orderedData = orderByDate(rawData);
+      const updatedData = checkIfUpdatesRequired(rawData);
+      const orderedData = orderByDate(updatedData);
       setData(orderedData);
     }
   }, []);
+
+  const checkIfUpdatesRequired = (data) => {
+    const result = data.map((item) => {
+      const updateRequired = updateDateIfPast(item.date);
+      if (!updateRequired) return item;
+      return { ...item, date: updateRequired };
+    });
+    return result;
+  };
 
   const saveData = (newData) => {
     const orderedData = orderByDate(newData);
@@ -46,28 +56,29 @@ function App() {
     saveData(dataCopy);
   };
 
+  let birthdayItems;
+  if (data.length > 0) {
+    birthdayItems = data.map((item) => {
+      return (
+        <BirthdayItem
+          key={item.id}
+          id={item.id}
+          name={item.name}
+          birthday={createDateString(item.date)}
+          updateItem={updateData}
+          deleteItem={deleteItem}
+        />
+      );
+    });
+  }
+
   return (
     <>
       <GlobalStyle />
       <AppContainer>
         <Header showAdd={showAdd} setShowAdd={setShowAdd} />
         <AddNew showAdd={showAdd} setShowAdd={setShowAdd} addData={addData} />
-        <Body>
-          {data.length > 0
-            ? data.map((item) => {
-                return (
-                  <BirthdayItem
-                    key={item.id}
-                    id={item.id}
-                    name={item.name}
-                    birthday={createDateString(item.date)}
-                    updateItem={updateData}
-                    deleteItem={deleteItem}
-                  />
-                );
-              })
-            : "You have no reminders"}
-        </Body>
+        <Body>{data.length > 0 ? birthdayItems : "You have no reminders"}</Body>
       </AppContainer>
     </>
   );

@@ -25,4 +25,17 @@ const orderByDate = (data) => {
   return data;
 };
 
-export { createDateString, reverseDateString, orderByDate };
+const updateDateIfPast = (date) => {
+  if (typeof date === "string") {
+    date = new Date(date);
+  }
+  const now = new Date();
+  if (date < now) {
+    const newDateMs = date.setFullYear(date.getFullYear() + 1);
+    const newDate = new Date(newDateMs);
+    return newDate;
+  }
+  return false;
+};
+
+export { createDateString, reverseDateString, orderByDate, updateDateIfPast };

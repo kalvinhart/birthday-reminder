@@ -12,6 +12,7 @@ import { SpanError } from "../../styles/textStyles";
 import Button from "../Button/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { updateDateIfPast } from "../../helpers/dateHelper";
 
 const AddNew = ({ showAdd, setShowAdd, addData }) => {
   const [name, setName] = useState("");
@@ -19,7 +20,12 @@ const AddNew = ({ showAdd, setShowAdd, addData }) => {
   const [error, setError] = useState(false);
 
   const handleDateChange = (date) => {
-    setSelectedDate(date);
+    const needNewDate = updateDateIfPast(date);
+    if (!needNewDate) {
+      setSelectedDate(date);
+      return;
+    }
+    setSelectedDate(needNewDate);
   };
 
   const validateForm = (e) => {
