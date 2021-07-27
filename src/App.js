@@ -46,13 +46,7 @@ function App() {
       <GlobalStyle />
       <AppContainer>
         <Header showAdd={showAdd} setShowAdd={setShowAdd} />
-        <AddNew
-          showAdd={showAdd}
-          setShowAdd={setShowAdd}
-          data={data}
-          setData={setData}
-          addData={addData}
-        />
+        <AddNew showAdd={showAdd} setShowAdd={setShowAdd} addData={addData} />
         <Body>
           {data.length > 0
             ? data.map((item) => {

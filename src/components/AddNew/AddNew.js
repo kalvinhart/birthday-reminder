@@ -15,7 +15,7 @@ import { createDateString } from "../../helpers/dateHelper";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const AddNew = ({ showAdd, setShowAdd, data, setData, addData }) => {
+const AddNew = ({ showAdd, setShowAdd, addData }) => {
   const [name, setName] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [newDate, setNewDate] = useState(null);
