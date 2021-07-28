@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+
 import { StyledItemWrapper, TextWrapper, ButtonWrapper } from "./BirthdayItem.styles";
 import { H2, SpanBirthday, SpanToday, SpanMonth } from "../../styles/textStyles";
 import { StyledForm, StyledInput } from "../../styles/formStyles";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Button from "../Button/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
 import {
   reverseDateString,
   updateDateIfPast,
@@ -122,6 +125,7 @@ BirthdayItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   birthday: PropTypes.string.isRequired,
+  updateItem: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
 };
 

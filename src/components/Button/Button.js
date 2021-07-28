@@ -16,7 +16,7 @@ Button.propTypes = {
   type: PropTypes.string.isRequired,
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   icon: PropTypes.element,
-  onClick: PropTypes.func,
+  click: PropTypes.func,
 };
 
 export default Button;

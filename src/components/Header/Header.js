@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import { StyledHeader } from "./Header.styles";
 import { H1 } from "../../styles/textStyles";
+
 import Button from "../Button/Button";
 
 const Header = ({ showAdd, setShowAdd }) => {

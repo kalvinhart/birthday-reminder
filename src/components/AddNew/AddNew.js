@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
+
 import { StyledAddNewWrapper, StyledAddNewContainer } from "./AddNew.styles";
 import {
   StyledForm,
@@ -9,9 +10,11 @@ import {
   StyledInput,
 } from "../../styles/formStyles.js";
 import { SpanError } from "../../styles/textStyles";
+
 import Button from "../Button/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
 import { updateDateIfPast } from "../../helpers/dateHelpers";
 
 const AddNew = ({ showAdd, setShowAdd, addData }) => {
