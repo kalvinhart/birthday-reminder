@@ -12,7 +12,7 @@ import { SpanError } from "../../styles/textStyles";
 import Button from "../Button/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { updateDateIfPast } from "../../helpers/dateHelper";
+import { updateDateIfPast } from "../../helpers/dateHelpers";
 
 const AddNew = ({ showAdd, setShowAdd, addData }) => {
   const [name, setName] = useState("");

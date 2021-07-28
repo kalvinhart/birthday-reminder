@@ -7,7 +7,7 @@ import Body from "./components/Body/Body";
 import AddNew from "./components/AddNew/AddNew";
 import BirthdayItem from "./components/BirthdayItem/BirthdayItem";
 
-import { createDateString, orderByDate, updateDateIfPast } from "./helpers/dateHelper";
+import { createDateString, orderByDate, updateDateIfPast } from "./helpers/dateHelpers";
 
 function App() {
   const [data, setData] = useState([]);

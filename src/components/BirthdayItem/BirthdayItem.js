@@ -13,7 +13,7 @@ import {
   updateDateIfPast,
   birthdayIsToday,
   birthdayIsThisMonth,
-} from "../../helpers/dateHelper";
+} from "../../helpers/dateHelpers";
 
 const BirthdayItem = ({ id, name, birthday, updateItem, deleteItem }) => {
   const [editing, setEditing] = useState(false);
