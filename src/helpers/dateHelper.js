@@ -51,6 +51,7 @@ const birthdayIsThisMonth = (birthdayDate) => {
   const today = new Date();
   const reversedString = reverseDateString(birthdayDate);
   const birthday = new Date(reversedString);
+  if (today.getFullYear() !== birthday.getFullYear()) return false;
   return today.getMonth() === birthday.getMonth();
 };
 
