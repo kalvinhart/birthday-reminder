@@ -9,18 +9,28 @@ import BirthdayItem from "./components/BirthdayItem/BirthdayItem";
 
 import { createDateString, orderByDate, updateDateIfPast } from "./helpers/dateHelpers";
 
-function App() {
-  const [data, setData] = useState([]);
+import { data as initialData } from "./data";
+
+const App = () => {
+  const [data, setData] = useState(initialData);
   const [showAdd, setShowAdd] = useState(false);
 
   useEffect(() => {
+    const init = (dataArray) => {
+      const updatedData = checkIfUpdatesRequired(dataArray);
+      const orderedData = orderByDate(updatedData);
+      return orderedData;
+    };
+
     if (localStorage.getItem("birthdays")) {
       const rawData = JSON.parse(localStorage.getItem("birthdays"));
-      const updatedData = checkIfUpdatesRequired(rawData);
-      const orderedData = orderByDate(updatedData);
-      setData(orderedData);
+      const preparedData = init(rawData);
+      setData(preparedData);
+    } else {
+      const preparedData = init(data);
+      saveData(preparedData);
     }
-  }, []);
+  }, [data]);
 
   const checkIfUpdatesRequired = (data) => {
     const result = data.map((item) => {
@@ -82,6 +92,6 @@ function App() {
       </AppContainer>
     </>
   );
-}
+};
 
 export default App;
