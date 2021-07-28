@@ -7,6 +7,12 @@ const StyledItemWrapper = styled.div`
   padding: 15px 0;
   ${"" /* background-color: ${(props) => (props.today ? "grey" : "white")}; */}
   ${(props) => (props.today ? "color: #00cec9; font-weight: 600; height: 120px;" : "")}
+  ${(props) =>
+    props.thisMonth
+      ? !props.today
+        ? "color: #0984e3; font-weight: 600; height: 120px;"
+        : ""
+      : ""}
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

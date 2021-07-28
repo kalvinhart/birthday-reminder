@@ -26,9 +26,14 @@ const SpanToday = styled.span`
   font-weight: 400;
 `;
 
+const SpanMonth = styled.span`
+  font-size: 18px;
+  font-weight: 400;
+`;
+
 const SpanError = styled.span`
   font-size: 12px;
   font-weight: 700;
 `;
 
-export { H1, H2, SpanBirthday, SpanToday, SpanError };
+export { H1, H2, SpanBirthday, SpanToday, SpanMonth, SpanError };

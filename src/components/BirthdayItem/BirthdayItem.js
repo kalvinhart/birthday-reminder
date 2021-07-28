@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { StyledItemWrapper, TextWrapper, ButtonWrapper } from "./BirthdayItem.styles";
-import { H2, SpanBirthday, SpanToday } from "../../styles/textStyles";
+import { H2, SpanBirthday, SpanToday, SpanMonth } from "../../styles/textStyles";
 import { StyledForm, StyledInput } from "../../styles/formStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -12,6 +12,7 @@ import {
   reverseDateString,
   updateDateIfPast,
   birthdayIsToday,
+  birthdayIsThisMonth,
 } from "../../helpers/dateHelper";
 
 const BirthdayItem = ({ id, name, birthday, updateItem, deleteItem }) => {
@@ -19,9 +20,11 @@ const BirthdayItem = ({ id, name, birthday, updateItem, deleteItem }) => {
   const [editingName, setEditingName] = useState(name);
   const [date, setDate] = useState(new Date(reverseDateString(birthday)));
   const [todayStyle, setTodayStyle] = useState(false);
+  const [monthStyle, setMonthStyle] = useState(false);
 
   useEffect(() => {
     setTodayStyle(birthdayIsToday(birthday));
+    setMonthStyle(birthdayIsThisMonth(birthday));
   }, [birthday]);
 
   const handleUpdate = (e) => {
@@ -54,7 +57,7 @@ const BirthdayItem = ({ id, name, birthday, updateItem, deleteItem }) => {
   };
 
   return (
-    <StyledItemWrapper today={todayStyle} editing={editing}>
+    <StyledItemWrapper today={todayStyle} thisMonth={monthStyle} editing={editing}>
       {editing ? (
         <StyledForm onSubmit={handleUpdate}>
           <StyledInput
@@ -102,6 +105,13 @@ const BirthdayItem = ({ id, name, birthday, updateItem, deleteItem }) => {
               <SpanToday>{`It's ${name}'s birthday today!`}</SpanToday>
             </TextWrapper>
           )}
+          {monthStyle ? (
+            !todayStyle ? (
+              <TextWrapper>
+                <SpanMonth>{`It's ${name}'s birthday this month!`}</SpanMonth>
+              </TextWrapper>
+            ) : null
+          ) : null}
         </>
       )}
     </StyledItemWrapper>

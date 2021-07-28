@@ -11,8 +11,8 @@ const createDateString = (date) => {
 
 const reverseDateString = (string) => {
   const splitString = string.split("/");
-  const reveresedString = splitString.reverse();
-  const joinedString = reveresedString.join("/");
+  const reversedString = splitString.reverse();
+  const joinedString = reversedString.join("/");
   return joinedString;
 };
 
@@ -42,9 +42,16 @@ const updateDateIfPast = (date) => {
 
 const birthdayIsToday = (birthdayDate) => {
   const today = new Date().setHours(0, 0, 0, 0);
-  const reveresedString = reverseDateString(birthdayDate);
-  const birthday = new Date(reveresedString).setHours(0, 0, 0, 0);
+  const reversedString = reverseDateString(birthdayDate);
+  const birthday = new Date(reversedString).setHours(0, 0, 0, 0);
   return today === birthday;
+};
+
+const birthdayIsThisMonth = (birthdayDate) => {
+  const today = new Date();
+  const reversedString = reverseDateString(birthdayDate);
+  const birthday = new Date(reversedString);
+  return today.getMonth() === birthday.getMonth();
 };
 
 export {
@@ -53,4 +60,5 @@ export {
   orderByDate,
   updateDateIfPast,
   birthdayIsToday,
+  birthdayIsThisMonth,
 };
