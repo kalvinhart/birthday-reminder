@@ -1,19 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { StyledItemWrapper, TextWrapper, ButtonWrapper } from "./BirthdayItem.styles";
-import { H2, SpanBirthday } from "../../styles/textStyles";
+import { H2, SpanBirthday, SpanToday } from "../../styles/textStyles";
 import { StyledForm, StyledInput } from "../../styles/formStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Button from "../Button/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { reverseDateString, updateDateIfPast } from "../../helpers/dateHelper";
+import {
+  reverseDateString,
+  updateDateIfPast,
+  birthdayIsToday,
+} from "../../helpers/dateHelper";
 
 const BirthdayItem = ({ id, name, birthday, updateItem, deleteItem }) => {
   const [editing, setEditing] = useState(false);
   const [editingName, setEditingName] = useState(name);
   const [date, setDate] = useState(new Date(reverseDateString(birthday)));
+  const [todayStyle, setTodayStyle] = useState(false);
+
+  useEffect(() => {
+    setTodayStyle(birthdayIsToday(birthday));
+  }, [birthday]);
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -45,7 +54,7 @@ const BirthdayItem = ({ id, name, birthday, updateItem, deleteItem }) => {
   };
 
   return (
-    <StyledItemWrapper editing={editing}>
+    <StyledItemWrapper today={todayStyle} editing={editing}>
       {editing ? (
         <StyledForm onSubmit={handleUpdate}>
           <StyledInput
@@ -88,6 +97,11 @@ const BirthdayItem = ({ id, name, birthday, updateItem, deleteItem }) => {
               click={() => deleteItem(id)}
             />
           </ButtonWrapper>
+          {todayStyle && (
+            <TextWrapper>
+              <SpanToday>{`It's ${name}'s birthday today!`}</SpanToday>
+            </TextWrapper>
+          )}
         </>
       )}
     </StyledItemWrapper>

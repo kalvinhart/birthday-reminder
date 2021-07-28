@@ -5,7 +5,10 @@ const StyledItemWrapper = styled.div`
   width: 100%;
   height: ${(props) => (props.editing ? "150px" : "50px")};
   padding: 15px 0;
+  ${"" /* background-color: ${(props) => (props.today ? "grey" : "white")}; */}
+  ${(props) => (props.today ? "color: #00cec9; font-weight: 600; height: 120px;" : "")}
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   transition: height 0.2s ease;

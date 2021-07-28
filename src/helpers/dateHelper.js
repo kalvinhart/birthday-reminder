@@ -40,4 +40,17 @@ const updateDateIfPast = (date) => {
   return false;
 };
 
-export { createDateString, reverseDateString, orderByDate, updateDateIfPast };
+const birthdayIsToday = (birthdayDate) => {
+  const today = new Date().setHours(0, 0, 0, 0);
+  const reveresedString = reverseDateString(birthdayDate);
+  const birthday = new Date(reveresedString).setHours(0, 0, 0, 0);
+  return today === birthday;
+};
+
+export {
+  createDateString,
+  reverseDateString,
+  orderByDate,
+  updateDateIfPast,
+  birthdayIsToday,
+};
