@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import GlobalStyle from "./styles/globalStyles";
 
 import AppContainer from "./components/AppContainer/AppContainer";
@@ -14,8 +14,11 @@ import { data as initialData } from "./data";
 const App = () => {
   const [data, setData] = useState(initialData);
   const [showAdd, setShowAdd] = useState(false);
+  let loaded = useRef(false);
 
   useEffect(() => {
+    if (loaded.current) return;
+
     const init = (dataArray) => {
       const updatedData = checkIfUpdatesRequired(dataArray);
       const orderedData = orderByDate(updatedData);
@@ -30,6 +33,8 @@ const App = () => {
       const preparedData = init(data);
       saveData(preparedData);
     }
+
+    loaded.current = true;
   }, [data]);
 
   const checkIfUpdatesRequired = (data) => {
