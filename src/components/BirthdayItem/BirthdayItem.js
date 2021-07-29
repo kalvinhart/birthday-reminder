@@ -111,7 +111,7 @@ const BirthdayItem = ({ id, name, birthday, updateItem, deleteItem }) => {
           {monthStyle ? (
             !todayStyle ? (
               <TextWrapper>
-                <SpanMonth>{`It's ${name}'s birthday this month!`}</SpanMonth>
+                <SpanMonth>{`It's ${name}'s birthday soon!`}</SpanMonth>
               </TextWrapper>
             ) : null
           ) : null}

@@ -51,8 +51,8 @@ const birthdayIsThisMonth = (birthdayDate) => {
   const today = new Date();
   const reversedString = reverseDateString(birthdayDate);
   const birthday = new Date(reversedString);
-  if (today.getFullYear() !== birthday.getFullYear()) return false;
-  return today.getMonth() === birthday.getMonth();
+  const timeBetween = Math.abs(today.getTime() - birthday.getTime());
+  return timeBetween / (1000 * 60 * 60 * 24) <= 30;
 };
 
 export {
