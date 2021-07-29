@@ -3,7 +3,7 @@ import { StyledInput } from "../../styles/formStyles";
 
 const StyledItemWrapper = styled.div`
   width: 100%;
-  height: ${(props) => (props.editing ? "150px" : "50px")};
+  height: ${(props) => (props.editing ? "150px" : "60px")};
   padding: 15px 0;
   ${"" /* background-color: ${(props) => (props.today ? "grey" : "white")}; */}
   ${(props) => (props.today ? "color: #00cec9; font-weight: 600; height: 120px;" : "")}
