@@ -5,6 +5,8 @@ const StyledBody = styled.div`
   padding: 20px;
   height: calc(100% - var(--header-height));
   overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--clr-primary) white;
 
   &::-webkit-scrollbar {
     width: 5px;
