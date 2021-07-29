@@ -15,7 +15,7 @@ const StyledButton = styled.button`
 
   &:hover,
   &:active {
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-btn);
   }
 
   & svg {

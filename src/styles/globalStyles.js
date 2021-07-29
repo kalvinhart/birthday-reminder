@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
         --clr-primary: #fd746c;
         --clr-secondary: #ff8c86;
         --box-shadow: 2px 2px 6px 4px rgba(0, 0, 0, 0.1);
+        --box-shadow-btn: 0 0 6px 4px rgba(253, 116, 108, 0.2);
         --box-shadow-bottom: 0 2px 6px 4px rgba(0, 0, 0, 0.1);
         --header-height: 50px;
         --gradient: linear-gradient(to bottom, rgb(255, 140, 134), rgb(253, 116, 108));
