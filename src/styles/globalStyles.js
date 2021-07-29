@@ -26,6 +26,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         min-height: 100vh;
         background-color: #fafafa;
+        background-image: url("https://www.transparenttextures.com/patterns/diamond-upholstery.png");
         display: flex;
         justify-content: center;
         align-items: center;
